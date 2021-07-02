@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const csp = require('express-csp');
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorControllers');
@@ -117,6 +118,7 @@ app.use(xss());
 app.use(hpp({ whitelist: ['duration'] }));
 app.use(express.static(`${__dirname}/public`));
 
+app.use(compression());
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   //console.log(req.cookies);

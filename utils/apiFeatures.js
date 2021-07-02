@@ -19,7 +19,7 @@ class APIFeatures {
       (match) => `$${match}`
     );
 
-    console.log(JSON.parse(queryString));
+   // console.log(JSON.parse(queryString));
 
     this.query = this.query.find(JSON.parse(queryString));
 

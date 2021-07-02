@@ -38,7 +38,7 @@ const createSendToken = (user, statusCode, res) => {
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create(req.body);
   const url = `${req.protocol}://${req.get('host')}/me`;
-  console.log(url);
+  //console.log(url);
   new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, res);
 });
@@ -90,7 +90,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   // const decoded = await promisify(jwt.verify(token, process.env.JWT_SECRET));
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  console.log(decoded);
+  //console.log(decoded);
   //3) Check if user still exists
   const currentUser = await User.findById(decoded.id);
   if (!currentUser) {
